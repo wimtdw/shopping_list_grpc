@@ -8,8 +8,8 @@
 
 Был создан для изучения базовых принципов работы с gRPC.
 
-Используемые технологии: Python, Flask, HTML, Bootstrap, grpcio, grpcio-tools
+Используемые технологии: Python, Flask, HTML, Bootstrap, grpcio, grpcio-tools.
 
 <table><tr><td>
-  <img src="https://github.com/user-attachments/assets/754257b7-9f22-4b29-a7a9-b3258886fcca" width="600" border="2"/>
+  <img src="https://github.com/user-attachments/assets/754257b7-9f22-4b29-a7a9-b3258886fcca" width="600"/>
 </td></tr></table>
