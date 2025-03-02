@@ -10,4 +10,6 @@
 
 Используемые технологии: Python, Flask, HTML, Bootstrap, grpcio, grpcio-tools
 
-![image_2025-03-02_18-14-08](https://github.com/user-attachments/assets/754257b7-9f22-4b29-a7a9-b3258886fcca)
+<table><tr><td>
+  <img src="https://github.com/user-attachments/assets/754257b7-9f22-4b29-a7a9-b3258886fcca" width="600" border="2"/>
+</td></tr></table>
