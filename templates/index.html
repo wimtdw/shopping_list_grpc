@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список покупок</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Список продуктов</h1>
+
+        <form method="POST" class="mb-3">
+            <input type="hidden" name="action" value="create">
+            <div class="form-group">
+                <label for="name">Название:</label>
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="quantity">Количество:</label>
+                <input type="number" class="form-control" id="quantity" name="quantity">
+            </div>
+            <button type="submit" class="btn btn-primary">Добавить продукт</button>
+        </form>
+
+        <h2>Продукты</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Название</th>
+                    <th>Количество</th>
+                    <th>Куплен</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>{{ product.purchased }}</td>
+                    <td>
+                        <div class="d-flex gap-2">
+                            <form method="POST" class="flex-grow-1">
+                                <input type="hidden" name="action" value="update">
+                                <input type="hidden" name="product_id" value="{{ product.id }}">
+                                <div class="form-group mb-0">
+                                    <input type="text" class="form-control" name="name" value="{{ product.name }}">
+                                </div>
+                                <div class="form-group mb-0">
+                                    <input type="number" class="form-control" name="quantity" value="{{ product.quantity }}">
+                                </div>
+                                <div class="form-check mb-0">
+                                    <input class="form-check-input" type="checkbox" name="purchased" {% if product.purchased %}checked{% endif %}>
+                                    <label class="form-check-label" for="purchased">Куплен</label>
+                                </div>
+                                <button type="submit" class="btn btn-warning mt-2">Обновить</button>
+                            </form>
+                            <form method="POST" class="mx-2">
+                                <input type="hidden" name="action" value="delete">
+                                <input type="hidden" name="product_id" value="{{ product.id }}">
+                                <button type="submit" class="btn btn-danger mt-2">Удалить</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

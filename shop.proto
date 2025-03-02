@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+// import "google/protobuf/empty.proto";
+
+package shop;
+
+message Empty {}
+
+// Информация о продукте
+message Product {
+  string id = 1; // Уникальный идентификатор продукта (можно сгенерировать на сервере)
+  string name = 2; // Название продукта
+  int32 quantity = 3; // Количество
+  bool purchased = 4; // Отметка о покупке
+}
+
+// Запрос на создание продукта
+message CreateProductRequest {
+  string name = 1;
+  int32 quantity = 2;
+}
+
+// Запрос на обновление продукта
+message UpdateProductRequest {
+  string id = 1;
+  string name = 2;
+  int32 quantity = 3;
+  bool purchased = 4;
+}
+
+// Запрос на удаление продукта
+message DeleteProductRequest {
+  string id = 1;
+}
+
+// Запрос на получение списка продуктов
+message ListProductsRequest {}
+
+// Ответ, содержащий список продуктов
+message ListProductsResponse {
+  repeated Product products = 1;
+}
+
+// Сервис
+service ShopService {
+  rpc CreateProduct (CreateProductRequest) returns (Product);
+  rpc ReadProduct (ReadProductRequest) returns (Product);
+  rpc UpdateProduct (UpdateProductRequest) returns (Product);
+  rpc DeleteProduct (DeleteProductRequest) returns (Empty);
+  rpc ListProducts (ListProductsRequest) returns (ListProductsResponse);
+}
